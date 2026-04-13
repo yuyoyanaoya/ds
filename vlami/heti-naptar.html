@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naptár</title>
+    <link rel="icon" href="../kepek/icon.png" />
+    <link rel="stylesheet" href="egyesitett.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav">
+            <div class="nav-bal">
+                <img class="logo-nav" src="kepek/icon.png" alt="">
+                <h1 class="cim">Naptár</h1>
+            </div>
+            <div class="nav-jobb">
+                <div class="nezet-valaszto" id="nezetValaszto">
+                    <button class="nezet-valaszto-btn" id="nezetBtn">
+                        <span id="nezetLabel">Heti</span>
+                        <i class="fa-solid fa-chevron-down chevron"></i>
+                    </button>
+                    <div class="nezet-dropdown">
+                        <button class="nezet-option active"
+                            onclick="nezetValtas('heti-naptar.html', this)">Heti</button>
+                        <button class="nezet-option" onclick="nezetValtas('havi-naptar.html', this)">Havi</button>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <div id="wrapper">
+        <div id="nagyDiv">
+            <div class="calendar">
+                <div class="header">
+                    <button id="prevBtn2">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="monthYear" id="monthYear2"></div>
+                    <button id="nextBtn2">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="days">
+                    <div class="day">Hét</div>
+                    <div class="day">Ked</div>
+                    <div class="day">Sze</div>
+                    <div class="day">Csü</div>
+                    <div class="day">Pén</div>
+                    <div class="day">Szo</div>
+                    <div class="day">Vas</div>
+                </div>
+
+                <div class="dates" id="dates2"></div>
+            </div>
+            <br>
+            <div class="draganddrop">
+                <div class="ddlist">
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Agidyne</div>
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Maragidyne</div>
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Salvation</div>
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Mediarama</div>
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Fire Break</div>
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Fire Amp</div>
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Agilao</div>
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Dia</div>
+                    <div class="listElement" draggable="true"><img src="../kepek/parallel.svg">Maragion</div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="rightContent">
+            <div class="heti-naptar">
+
+                <div class="het-fejlec">
+                    <div class="ido-fejlec"></div>
+                </div>
+
+
+                <div class="het-torzs">
+                    <div class="ido-oszlop">
+                        <div class="ido-sav"><span>0:00</span></div>
+                        <div class="ido-sav"><span>1:00</span></div>
+                        <div class="ido-sav"><span>2:00</span></div>
+                        <div class="ido-sav"><span>3:00</span></div>
+                        <div class="ido-sav"><span>4:00</span></div>
+                        <div class="ido-sav"><span>5:00</span></div>
+                        <div class="ido-sav"><span>6:00</span></div>
+                        <div class="ido-sav"><span>7:00</span></div>
+                        <div class="ido-sav"><span>8:00</span></div>
+                        <div class="ido-sav"><span>9:00</span></div>
+                        <div class="ido-sav"><span>10:00</span></div>
+                        <div class="ido-sav"><span>11:00</span></div>
+                        <div class="ido-sav"><span>12:00</span></div>
+                        <div class="ido-sav"><span>13:00</span></div>
+                        <div class="ido-sav"><span>14:00</span></div>
+                        <div class="ido-sav"><span>15:00</span></div>
+                        <div class="ido-sav"><span>16:00</span></div>
+                        <div class="ido-sav"><span>17:00</span></div>
+                        <div class="ido-sav"><span>18:00</span></div>
+                        <div class="ido-sav"><span>19:00</span></div>
+                        <div class="ido-sav"><span>20:00</span></div>
+                        <div class="ido-sav"><span>21:00</span></div>
+                        <div class="ido-sav"><span>22:00</span></div>
+                        <div class="ido-sav"><span>23:00</span></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="egyesitett.js"></script>
+</body>
+
+</html>

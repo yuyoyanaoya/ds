@@ -1,0 +1,760 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "Arial", sans-serif;
+  background: #f1f3f4;
+  padding: 20px;
+}
+
+/* dark-light mode*/
+
+body.lightmode {
+  background-color: #f1f3f4;
+  color: #000;
+}
+
+body.darkmode {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+/* Naptár doboz sötét módban */
+body.darkmode .calendar {
+  background: #2c2c2c;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+body.darkmode .header button {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+body.darkmode .date:hover,
+body.darkmode .date.active {
+  background: #ff5869;
+  color: #fff;
+}
+
+body.darkmode .date.inactive {
+  color: #666;
+}
+
+body.darkmode .monthYear {
+  color: #fff;
+}
+
+body.darkmode .day {
+  color: #aaa;
+}
+
+body.darkmode #nagyDiv {
+  background-color: #2c2c2c;
+}
+
+/* Heti naptár sötét módban */
+body.darkmode .heti-naptar {
+  background: #2c2c2c;
+  border-color: #444;
+}
+
+body.darkmode .het-fejlec {
+  background: #2c2c2c;
+  border-color: #444;
+}
+
+body.darkmode .nap-fejlec {
+  border-color: #444;
+  background: #2c2c2c;
+}
+
+body.darkmode .ido-fejlec {
+  border-color: #444;
+  background: #2c2c2c;
+}
+
+body.darkmode .ido-oszlop {
+  border-color: #444;
+  background: #2c2c2c;
+}
+
+body.darkmode .ido-sav {
+  color: #aaa;
+}
+
+body.darkmode .het-torzs {
+  background: #2c2c2c;
+}
+
+body.darkmode .nap-nev {
+  color: #aaa;
+}
+
+body.darkmode .nap-szam {
+  color: #fff;
+}
+
+body.darkmode .nap-oszlop {
+  border-color: #3a3a3a;
+}
+
+body.darkmode .ora-sav {
+  border-bottom-color: #333;
+}
+
+/* Havi naptár sötét módban */
+body.darkmode .havi-naptar {
+  background: #2c2c2c;
+  border-color: #444;
+}
+
+body.darkmode .honap-fejlec {
+  background: #2c2c2c;
+  border-color: #444;
+}
+
+body.darkmode .hetkonap-fejlec {
+  color: #aaa;
+  border-color: #3a3a3a;
+}
+
+body.darkmode .nap-cella {
+  background: #2c2c2c;
+  border-color: #3a3a3a;
+}
+
+body.darkmode .nap-cella.masik-honap {
+  background: #252525;
+}
+
+body.darkmode .nap-cella.masik-honap .nap-szam {
+  color: #555;
+}
+
+/* Nav sötét módban */
+body.darkmode nav {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+body.darkmode .cim {
+  color: #fff;
+}
+
+body.darkmode .naptar-valaszto {
+  background-color: #444;
+  color: #fff;
+}
+
+body.darkmode .dropdown .btn {
+  background: #3a3a3a;
+  color: #fff;
+  border-color: #555;
+}
+
+body.darkmode .menu {
+  background: #2c2c2c;
+  border-color: #555;
+  color: #fff;
+}
+
+body.darkmode .item:hover {
+  background: #3a3a3a;
+}
+
+/*toggle*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin: 10px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #ff5869;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/*mini naptar*/
+
+/*uj resz*/
+
+.calendar {
+  width: 190px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.nap-cella:hover {
+  transform: scale(1.05);
+  background: #f8f9ff;
+  border-color: #667eea;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+  z-index: 1;
+}
+
+.nap-cella.today {
+  background: #e8f5e9;
+  border-color: #4caf50;
+}
+
+/*eddig*/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.monthYear {
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100px;
+}
+
+.header button {
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  font-size: 10px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+  text-align: center;
+  padding: 2px;
+  font-size: 11px;
+  color: #999fa6;
+  font-weight: 500;
+}
+
+.dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 25px);
+  gap: 3px;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 11px;
+  transition: 0.2s;
+}
+
+.date:hover,
+.date.active {
+  background: #ff5869;
+  color: #fff;
+}
+
+.date.inactive {
+  color: #ccc;
+}
+
+/*layout*/
+
+#idok {
+  margin-left: 10px;
+}
+
+#wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+#nagyDiv {
+  width: 210px;
+  background-color: grey;
+  border-radius: 20px;
+  margin: 10px;
+  padding: 10px;
+}
+
+#rightContent {
+  flex: 1;
+  padding: 20px;
+  /*margin-left: 250px;*/
+}
+
+/*dropdown*/
+
+.dropdown input#open {
+  display: none;
+}
+
+.btn {
+  background: #fff;
+  padding: 8px 14px;
+  border: 1px solid #dadce0;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.menu {
+  display: none;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  margin-top: 6px;
+  min-width: 160px;
+  color: black;
+}
+
+#open:checked ~ .menu {
+  display: block;
+}
+
+.item {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.item:hover {
+  background: #f1f3f4;
+}
+
+/*havi naptar*/
+
+.havi-naptar {
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.honap-fejlec {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #fff;
+  border-bottom: 2px solid #dadce0;
+}
+
+.hetkonap-fejlec {
+  padding: 12px;
+  text-align: center;
+  font-size: 11px;
+  color: #70757a;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  border-right: 1px solid #f1f3f4;
+}
+
+.hetkonap-fejlec:last-child {
+  border-right: none;
+}
+
+.honap-racs {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  min-height: 600px;
+}
+
+.nap-cella {
+  border-right: 1px solid #e8eaed;
+  border-bottom: 1px solid #e8eaed;
+  padding: 8px;
+  min-height: 100px;
+  position: relative;
+  background: #fff;
+}
+
+.nap-cella:nth-child(7n) {
+  border-right: none;
+}
+
+.nap-cella.masik-honap {
+  background: #fafafa;
+}
+
+.nap-cella.masik-honap .nap-szam {
+  color: #bdc1c6;
+}
+
+.nap-szam {
+  font-size: 12px;
+  color: #3c4043;
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+/*heti naptar*/
+
+.heti-naptar {
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 60px repeat(7, 1fr);
+  grid-template-rows: auto repeat(24, 48px);
+  max-height: 700px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #dadce0 transparent;
+}
+
+.heti-naptar::-webkit-scrollbar {
+  width: 6px;
+}
+.heti-naptar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.heti-naptar::-webkit-scrollbar-thumb {
+  background: #dadce0;
+  border-radius: 3px;
+}
+body.darkmode .heti-naptar::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+.het-fejlec {
+  display: contents;
+}
+
+.ido-fejlec {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  border-right: 1px solid #dadce0;
+  border-bottom: 1px solid #dadce0;
+}
+
+.nap-fejlec {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  padding: 12px 8px;
+  text-align: center;
+  border-right: 1px solid #e8eaed;
+  border-bottom: 1px solid #dadce0;
+  min-width: 0;
+}
+
+.nap-fejlec:last-child {
+  border-right: none;
+}
+
+.nap-nev {
+  font-size: 11px;
+  color: #70757a;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.het-torzs {
+  display: contents;
+}
+
+.ido-oszlop {
+  grid-column: 1;
+  grid-row: 2 / 26;
+  border-right: 1px solid #dadce0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ido-sav {
+  height: 48px;
+  flex-shrink: 0;
+  padding-right: 8px;
+  font-size: 11px;
+  color: #70757a;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-top: 0;
+  transform: translateY(-7px);
+  box-sizing: border-box;
+}
+
+.ido-sav:first-child {
+  visibility: hidden;
+}
+
+.nap-oszlop {
+  grid-row: 2 / 26;
+  border-right: 1px solid #e8eaed;
+  display: flex;
+  flex-direction: column;
+}
+
+.nap-oszlop:last-child {
+  border-right: none;
+}
+
+.ora-sav {
+  height: 48px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #e8eaed;
+  box-sizing: border-box;
+}
+
+.ora-sav:nth-child(even) {
+  border-bottom-color: #f1f3f4;
+}
+
+/*nav*/
+
+nav {
+  background: #fff;
+  border-bottom: 1px solid #dadce0;
+  padding: 0 20px;
+  margin: -20px -20px 20px -20px;
+}
+
+body.darkmode nav {
+  background: #2c2c2c;
+  border-color: #444;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav-bal {
+  flex: 1;
+  display: flex;
+}
+
+.nav-kozep {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-jobb {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.cim {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 30px;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+}
+
+/* naptar valaszto*/
+
+.nezet-valaszto {
+  position: relative;
+  display: inline-block;
+}
+
+.nezet-valaszto-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #dadce0;
+  background: #fff;
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3c4043;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.nezet-valaszto-btn:hover {
+  background: #f1f3f4;
+}
+
+.nezet-valaszto-btn .chevron {
+  font-size: 10px;
+  transition: transform 0.2s;
+  color: #70757a;
+}
+
+.nezet-valaszto.open .chevron {
+  transform: rotate(180deg);
+}
+
+.nezet-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  min-width: 130px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.nezet-valaszto.open .nezet-dropdown {
+  display: block;
+}
+
+.nezet-option {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #3c4043;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.nezet-option:hover {
+  background: #f1f3f4;
+}
+
+.nezet-option.active {
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+/* Dark mode */
+body.darkmode .nezet-valaszto-btn {
+  background: #3a3a3a;
+  border-color: #555;
+  color: #fff;
+}
+
+body.darkmode .nezet-valaszto-btn:hover {
+  background: #444;
+}
+
+body.darkmode .nezet-valaszto-btn .chevron {
+  color: #aaa;
+}
+
+body.darkmode .nezet-dropdown {
+  background: #2c2c2c;
+  border-color: #555;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.darkmode .nezet-option {
+  color: #fff;
+}
+
+body.darkmode .nezet-option:hover {
+  background: #3a3a3a;
+}
+
+body.darkmode .nezet-option.active {
+  color: #8ab4f8;
+}
+
+.napok {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.napok .div {
+  font-size: 10px;
+  color: #999;
+}
+
+.logo-nav {
+  max-height: 40px;
+  max-width: 40px;
+}
+
+.listElement {
+  background-color: #ff5869;
+  border-radius: 50px;
+  margin: 5px;
+  width: fill;
+  padding: 2px;
+}
+
+.draganddrop {
+  height: auto;
+}
