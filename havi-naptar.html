@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naptár</title>
+    <link rel="icon" href="kepek/icon.png" />
+    <link rel="stylesheet" href="egyesitett.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav">
+            <div class="nav-bal">
+                <img class="logo-nav" src="kepek/icon.png" alt="">
+                <h1 class="cim">Naptár </h1>
+            </div>
+            <div class="nav-jobb">
+                <div class="nezet-valaszto" id="nezetValaszto">
+                    <button class="nezet-valaszto-btn" id="nezetBtn">
+                        <span id="nezetLabel">Havi</span>
+                        <i class="fa-solid fa-chevron-down chevron"></i>
+                    </button>
+                    <div class="nezet-dropdown">
+                        <button class="nezet-option" onclick="nezetValtas('heti-naptar.html', this)">Heti</button>
+                        <button class="nezet-option active"
+                            onclick="nezetValtas('havi-naptar.html', this)">Havi</button>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <div id="wrapper">
+        <div id="nagyDiv">
+            <button id="ujEsemeny" onclick="openModal()">Új esemény</button>
+            <div class="calendar">
+                <div class="header">
+                    <button id="prevBtn2">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="monthYear" id="monthYear2"></div>
+                    <button id="nextBtn2">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="days">
+                    <div class="day">Mon</div>
+                    <div class="day">Tue</div>
+                    <div class="day">Wed</div>
+                    <div class="day">Thu</div>
+                    <div class="day">Fri</div>
+                    <div class="day">Sat</div>
+                    <div class="day">Sun</div>
+                </div>
+
+                <div class="dates" id="dates2"></div>
+            </div>
+        </div>
+
+        <div id="rightContent">
+
+            <div class="havi-naptar">
+
+                <div class="honap-fejlec">
+                    <div class="hetkonap-fejlec">Hétfő</div>
+                    <div class="hetkonap-fejlec">Kedd</div>
+                    <div class="hetkonap-fejlec">Szerda</div>
+                    <div class="hetkonap-fejlec">Csütörtök</div>
+                    <div class="hetkonap-fejlec">Péntek</div>
+                    <div class="hetkonap-fejlec">Szombat</div>
+                    <div class="hetkonap-fejlec">Vasárnap</div>
+                </div>
+
+
+                <div class="honap-racs"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Új esemény létrehozása</h3>
+                <button class="close-button" onclick="loadEvents()">×</button>
+            </div>
+
+            <div class="selected-date-badge" id="selectedDateDisplay">
+                Kiválasztott dátum: -
+            </div>
+
+            <form id="eventForm">
+                <div class="form-group">
+                    <label>Esemény címe *</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Típus</label>
+                    <select id="eventType">
+                        <option value="Esemény">Esemény</option>
+                        <option value="Teendő">Teendő</option>
+                        <option value="Találkozó">Találkozók ütemterve</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Időpont</label>
+                    <div class="datetime-group">
+                        <input type="time" id="startTime" value="07:00">
+                        <span>–</span>
+                        <input type="time" id="endTime" value="08:00">
+                    </div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <div id="googleMeet"></div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Helyszín</label>
+                    <input type="text" id="location" placeholder="Helyszín megadása">
+                </div>
+
+                <div class="form-group">
+                    <label>Leírás / Melléklet</label>
+                    <textarea id="description" placeholder="Leírás vagy Google Drive-melléklet" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Kategória</label>
+                    <select id="category">
+                        <option value="Család">Család</option>
+                        <option value="Munka">Munka</option>
+                        <option value="Barátok">Barátok</option>
+                        <option value="Egyéb">Egyéb</option>
+                    </select>
+                </div>
+
+                <div class="form-group checkbox-group">
+
+                    <div id="busyStatus"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Értesítés ennyivel előtte</label>
+                    <select id="notification">
+                        <option value="0">Nincs</option>
+                        <option value="5">5 perccel</option>
+                        <option value="15">15 perccel</option>
+                        <option value="30" selected>30 perccel</option>
+                        <option value="60">1 órával</option>
+                        <option value="1440">1 nappal</option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="saveEvent()">Mentés</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Mégse</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="egyesitett.js"></script>
+</body>
+
+</html>
